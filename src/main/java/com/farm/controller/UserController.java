@@ -28,7 +28,7 @@ import com.farm.utils.R;
 /**
  * 登录相关
  */
-@RequestMapping("users")
+@RequestMapping("/api/v1users")
 @RestController
 public class UserController{
 	
