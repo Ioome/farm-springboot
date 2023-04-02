@@ -18,6 +18,8 @@ import org.springframework.http.HttpStatus;
 import com.farm.annotation.IgnoreAuth;
 import com.farm.entity.TokenEntity;
 import com.farm.utils.R;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * 权限(Token)验证
@@ -29,10 +31,9 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 
     @Autowired
     private TokenService tokenService;
-    
+
 	@Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
 		//支持跨域请求
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
@@ -86,7 +87,6 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 		        writer.close();
 		    }
 		}
-//				throw new EIException("请先登录", 401);
 		return false;
     }
 }

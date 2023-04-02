@@ -21,11 +21,6 @@ import com.farm.utils.PageUtils;
 import com.farm.utils.Query;
 
 
-/**
- * token
- * @author yangliyuan
- * @date 2019年10月10日 上午9:17:59
- */
 @Service("tokenService")
 public class TokenServiceImpl extends ServiceImpl<TokenDao, TokenEntity> implements TokenService {
 
