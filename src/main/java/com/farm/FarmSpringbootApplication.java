@@ -13,7 +13,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * @description: SpringbootSchemaApplication
  */
 @SpringBootApplication
-@MapperScan(basePackages = {"com.farm.dao"})
+@MapperScan(basePackages = "com.farm.dao")
 public class FarmSpringbootApplication extends SpringBootServletInitializer {
 
     public static void main (String[] args) {

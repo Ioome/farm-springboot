@@ -1,37 +1,46 @@
 # Tomcat
 server:
-    tomcat:
-        uri-encoding: UTF-8
-    port: 8080
-    servlet:
-        context-path: /farm
+  tomcat:
+    uri-encoding: UTF-8
+  port: 9241
+  servlet:
+    context-path: /farm
 
 spring:
-    datasource:
-        driverClassName: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://124.220.40.252:3312/sys?useUnicode=true&characterEncoding=utf-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-        username: root
-        password: 9978@wzb
-    servlet:
-      multipart:
-        max-file-size: 10MB
-        max-request-size: 10MB
-    resources:
-      static-locations: classpath:static/,file:static/
-    redis:
-      database: 1
-      host: 124.220.40.252
-      port: 6124
-      #    password: bS5Dyju7azsd1R3DSGASgsf
-      jedis:
-        pool:
-          max-active: 8
-          max-wait: -1
-          max-idle: 8
-          min-idle: 0
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://124.220.40.252:3312/sys?useUnicode=true&characterEncoding=utf-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: 9978@wzb
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  resources:
+    static-locations: classpath:static/,file:static/
+  redis:
+    database: 1
+    host: 124.220.40.252
+    port: 6124
+    #    password: bS5Dyju7azsd1R3DSGASgsf
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+  banner:
+    charset: UTF-8
+    location: classpath:banner.txt
+logging:
+  level:
+    root: debug
+    com.farm: debug
+  file:
+    # 日志文件路径
+    # 日志文件路径 linux
+    path: /opt/logs/farm/
 
-
-#mybatis
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
   #实体扫描，多个package用逗号或者分号分隔
