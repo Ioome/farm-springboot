@@ -4,14 +4,14 @@ server:
         uri-encoding: UTF-8
     port: 8080
     servlet:
-        context-path: /springbootae935
+        context-path: /farm
 
 spring:
     datasource:
-        driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/springbootae935?useUnicode=true&characterEncoding=utf-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://124.220.40.252:3312/sys?useUnicode=true&characterEncoding=utf-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
         username: root
-        password: 123456
+        password: 9978@wzb
     servlet:
       multipart:
         max-file-size: 10MB
