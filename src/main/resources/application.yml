@@ -34,8 +34,7 @@ spring:
     location: classpath:banner.txt
 logging:
   level:
-    root: debug
-    com.farm: debug
+    com.com: trace
   file:
     # 日志文件路径
     # 日志文件路径 linux
