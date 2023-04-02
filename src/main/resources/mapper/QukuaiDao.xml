@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.QukuaiDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.entity.QukuaiEntity" id="qukuaiMap">
+        <result property="bianhao" column="bianhao"/>
+        <result property="tudimingcheng" column="tudimingcheng"/>
+        <result property="tupian" column="tupian"/>
+        <result property="guimo" column="guimo"/>
+        <result property="mianji" column="mianji"/>
+        <result property="zhuangtai" column="zhuangtai"/>
+        <result property="shihezuowu" column="shihezuowu"/>
+        <result property="xiangqing" column="xiangqing"/>
+        <result property="clicktime" column="clicktime"/>
+        <result property="clicknum" column="clicknum"/>
+    </resultMap>
+
+	<select id="selectListVO"
+		resultType="com.entity.vo.QukuaiVO" >
+		SELECT * FROM qukuai  qukuai         
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	<select id="selectVO"
+		resultType="com.entity.vo.QukuaiVO" >
+		SELECT  qukuai.* FROM qukuai  qukuai 	
+ 		<where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+    <select id="selectListView"
+		resultType="com.entity.view.QukuaiView" >
+
+		SELECT  qukuai.* FROM qukuai  qukuai 	        
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	<select id="selectView"
+		resultType="com.entity.view.QukuaiView" >
+		SELECT * FROM qukuai  qukuai <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+</mapper>
