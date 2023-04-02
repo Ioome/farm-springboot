@@ -33,7 +33,7 @@ import com.farm.utils.MPUtil;
  * @date 2020-12-20 09:48:46
  */
 @RestController
-@RequestMapping("/zhiwu")
+@RequestMapping("/api/v1/zhiwu")
 public class ZhiwuController {
     @Autowired
     private ZhiwuService zhiwuService;

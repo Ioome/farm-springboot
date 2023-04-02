@@ -32,7 +32,7 @@ import com.farm.utils.MPUtil;
  * @date 2020-12-20 09:48:46
  */
 @RestController
-@RequestMapping("/huanjing")
+@RequestMapping("/api/v1/huanjing")
 public class HuanjingController {
     @Autowired
     private HuanjingService huanjingService;

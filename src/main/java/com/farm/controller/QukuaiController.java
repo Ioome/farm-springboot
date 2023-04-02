@@ -36,7 +36,7 @@ import com.farm.utils.MPUtil;
  * @date 2020-12-20 09:48:46
  */
 @RestController
-@RequestMapping("/qukuai")
+@RequestMapping("/api/v1/qukuai")
 public class QukuaiController {
     @Autowired
     private QukuaiService qukuaiService;

@@ -28,7 +28,7 @@ import com.farm.utils.R;
  * 上传文件映射表
  */
 @RestController
-@RequestMapping("file")
+@RequestMapping("/api/v1/file")
 @SuppressWarnings({"unchecked","rawtypes"})
 public class FileUploadController {
 	@Autowired

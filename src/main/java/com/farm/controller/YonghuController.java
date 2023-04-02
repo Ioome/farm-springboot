@@ -34,7 +34,7 @@ import com.farm.utils.MPUtil;
  * @date 2020-12-20 09:48:46
  */
 @RestController
-@RequestMapping("/yonghu")
+@RequestMapping("/api/v1/yonghu")
 public class YonghuController {
     @Autowired
     private YonghuService yonghuService;

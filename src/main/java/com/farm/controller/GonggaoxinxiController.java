@@ -33,7 +33,7 @@ import com.farm.utils.MPUtil;
  * @date 2020-12-20 09:48:46
  */
 @RestController
-@RequestMapping("/gonggaoxinxi")
+@RequestMapping("/api/v1/gonggaoxinxi")
 public class GonggaoxinxiController {
     @Autowired
     private GonggaoxinxiService gonggaoxinxiService;

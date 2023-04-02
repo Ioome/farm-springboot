@@ -32,7 +32,7 @@ import com.farm.utils.MPUtil;
  * @date 2020-12-20 09:48:46
  */
 @RestController
-@RequestMapping("/zhongzhi")
+@RequestMapping("/api/v1/zhongzhi")
 public class ZhongzhiController {
     @Autowired
     private ZhongzhiService zhongzhiService;

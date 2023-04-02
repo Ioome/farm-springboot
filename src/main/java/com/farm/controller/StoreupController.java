@@ -32,7 +32,7 @@ import com.farm.utils.MPUtil;
  * @date 2020-12-20 09:48:46
  */
 @RestController
-@RequestMapping("/storeup")
+@RequestMapping("/api/v1/storeup")
 public class StoreupController {
     @Autowired
     private StoreupService storeupService;

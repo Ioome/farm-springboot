@@ -33,7 +33,7 @@ import com.farm.utils.MPUtil;
  * @date 2020-12-20 09:48:46
  */
 @RestController
-@RequestMapping("/discussgonggaoxinxi")
+@RequestMapping("/api/v1/discussgonggaoxinxi")
 public class DiscussCommonCommentsController {
     @Autowired
     private DiscussgonggaoxinxiService discussgonggaoxinxiService;
