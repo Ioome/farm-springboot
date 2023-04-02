@@ -9,6 +9,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.net.InetAddress;
@@ -23,6 +24,7 @@ import java.net.UnknownHostException;
 @SpringBootApplication
 @EnableSwagger2
 @Slf4j
+@EnableScheduling
 @MapperScan(basePackages = "com.farm.dao")
 public class FarmSpringbootApplication extends SpringBootServletInitializer {
 
