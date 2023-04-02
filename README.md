@@ -11,13 +11,14 @@
 ## 项目结构
 - `src/main/java`: Java 代码目录
     - `com/farm`: 项目的 Java 包名
-        - `config`: 配置类
+        - `annotions`: 注解
         - `controller`: 控制器类
-        - `model`: 数据模型类
-        - `repository`: 数据库访问接口类
+        - `dao`: mapper接口
+        - `entity`: 实体类
         - `service`: 服务类
         - `util`: 工具类
-        - `MyProjectApplication.java`: 项目启动类
+        - `interceptor`: 拦截器
+        - `FarmSpringbootApplication.java`: 项目启动类
 - `src/main/resources`: 资源目录
     - `application.properties`: 应用程序配置文件
 - `src/test/java`: 测试代码目录
@@ -25,15 +26,3 @@
         - `controller`: 控制器测试类
         - `service`: 服务测试类
 - `pom.xml`: Maven 项目配置文件
-
-这里是一个 Spring Boot 项目的典型结构，其中包含了一些常见的包和类：
-
-- `config`: 存放配置类，如 Spring Security 配置类、Swagger 配置类等。
-- `controller`: 存放控制器类，处理 HTTP 请求并返回响应。
-- `model`: 存放数据模型类，如 POJO、DTO、VO 等。
-- `repository`: 存放数据库访问接口类，如 Spring Data JPA 的 Repository 接口。
-- `service`: 存放服务类，实现业务逻辑。
-- `util`: 存放工具类，如加解密工具类、日期时间工具类等。
-- `MyProjectApplication.java`: 项目启动类，包含 `main` 方法，用于启动 Spring Boot 应用程序。
-- `application.properties`: 应用程序配置文件，如数据库配置、日志配置等。
-- `controller` 和 `service` 目录下的测试类，用于测试控制器和服务类的方法是否正确。
