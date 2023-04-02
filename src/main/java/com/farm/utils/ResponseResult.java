@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 /**
  * @name: ResponseResult
@@ -13,7 +14,7 @@ import java.io.Serializable;
  */
 @Data
 @Builder
-public class ResponseResult<T> {
+public class ResponseResult<T>  extends HashMap<String, Object> {
     /**
      * response timestamp.
      */
