@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.dao.TokenDao">
+<mapper namespace="com.farm.dao.TokenDao">
 
     <select id="selectListView"
-		resultType="com.entity.TokenEntity" >
+		resultType="com.farm.entity.TokenEntity" >
 
 		SELECT  t.* FROM token  t 	        
         <where> 1=1 ${ew.sqlSegment}</where>

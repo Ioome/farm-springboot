@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.dao.DiscussqukuaiDao">
+<mapper namespace="com.farm.dao.DiscussqukuaiDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.entity.DiscussqukuaiEntity" id="discussqukuaiMap">
+    <resultMap type="com.farm.entity.DiscussqukuaiEntity" id="discussqukuaiMap">
         <result property="refid" column="refid"/>
         <result property="userid" column="userid"/>
         <result property="content" column="content"/>
@@ -12,26 +12,26 @@
     </resultMap>
 
 	<select id="selectListVO"
-		resultType="com.entity.vo.DiscussqukuaiVO" >
+		resultType="com.farm.entity.vo.DiscussqukuaiVO" >
 		SELECT * FROM discussqukuai  discussqukuai         
         <where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 	
 	<select id="selectVO"
-		resultType="com.entity.vo.DiscussqukuaiVO" >
+		resultType="com.farm.entity.vo.DiscussqukuaiVO" >
 		SELECT  discussqukuai.* FROM discussqukuai  discussqukuai 	
  		<where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 
     <select id="selectListView"
-		resultType="com.entity.view.DiscussqukuaiView" >
+		resultType="com.farm.entity.view.DiscussqukuaiView" >
 
 		SELECT  discussqukuai.* FROM discussqukuai  discussqukuai 	        
         <where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 	
 	<select id="selectView"
-		resultType="com.entity.view.DiscussqukuaiView" >
+		resultType="com.farm.entity.view.DiscussqukuaiView" >
 		SELECT * FROM discussqukuai  discussqukuai <where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 	

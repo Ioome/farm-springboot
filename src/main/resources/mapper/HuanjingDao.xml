@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.dao.HuanjingDao">
+<mapper namespace="com.farm.dao.HuanjingDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.entity.HuanjingEntity" id="huanjingMap">
+    <resultMap type="com.farm.entity.HuanjingEntity" id="huanjingMap">
         <result property="bianhao" column="bianhao"/>
         <result property="tudimingcheng" column="tudimingcheng"/>
         <result property="zhiwumingcheng" column="zhiwumingcheng"/>
@@ -25,26 +25,26 @@
     </resultMap>
 
 	<select id="selectListVO"
-		resultType="com.entity.vo.HuanjingVO" >
+		resultType="com.farm.entity.vo.HuanjingVO" >
 		SELECT * FROM huanjing  huanjing         
         <where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 	
 	<select id="selectVO"
-		resultType="com.entity.vo.HuanjingVO" >
+		resultType="com.farm.entity.vo.HuanjingVO" >
 		SELECT  huanjing.* FROM huanjing  huanjing 	
  		<where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 
     <select id="selectListView"
-		resultType="com.entity.view.HuanjingView" >
+		resultType="com.farm.entity.view.HuanjingView" >
 
 		SELECT  huanjing.* FROM huanjing  huanjing 	        
         <where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 	
 	<select id="selectView"
-		resultType="com.entity.view.HuanjingView" >
+		resultType="com.farm.entity.view.HuanjingView" >
 		SELECT * FROM huanjing  huanjing <where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 	
