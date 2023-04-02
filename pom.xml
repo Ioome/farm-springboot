@@ -8,11 +8,11 @@
 		<version>2.2.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.jlwl</groupId>
+	<groupId>com.smart.farm</groupId>
 	<!-- 导入项目的名称 -->
 	<artifactId>farm-springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springboot-schema</name>
+	<name>farm-springboot</name>
 	<description>springboot</description>
 
 	<properties>

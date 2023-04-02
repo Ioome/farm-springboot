@@ -18,6 +18,18 @@ spring:
         max-request-size: 10MB
     resources:
       static-locations: classpath:static/,file:static/
+    redis:
+      database: 1
+      host: 124.220.40.252
+      port: 6124
+      #    password: bS5Dyju7azsd1R3DSGASgsf
+      jedis:
+        pool:
+          max-active: 8
+          max-wait: -1
+          max-idle: 8
+          min-idle: 0
+
 
 #mybatis
 mybatis-plus:
