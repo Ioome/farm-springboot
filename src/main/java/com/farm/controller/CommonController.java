@@ -93,7 +93,6 @@ public class CommonController{
 			requests.add(req1);
 			requests.add(req2);
 			res = client.match(requests);
-			System.out.println(res.get("result"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			return R.error("文件不存在");
@@ -215,7 +214,7 @@ public class CommonController{
 	@IgnoreAuth
 	@RequestMapping("/group/{tableName}/{columnName}")
 	public R group(@PathVariable("tableName") String tableName, @PathVariable("columnName") String columnName) {
-		Map<String, Object> params = new HashMap<String, Object>();
+		Map<String, Object> params = new HashMap<>();
 		params.put("table", tableName);
 		params.put("column", columnName);
 		List<Map<String, Object>> result = commonService.selectGroup(params);
@@ -228,7 +227,7 @@ public class CommonController{
 	@IgnoreAuth
 	@RequestMapping("/value/{tableName}/{xColumnName}/{yColumnName}")
 	public R value(@PathVariable("tableName") String tableName, @PathVariable("yColumnName") String yColumnName, @PathVariable("xColumnName") String xColumnName) {
-		Map<String, Object> params = new HashMap<String, Object>();
+		Map<String, Object> params = new HashMap<>();
 		params.put("table", tableName);
 		params.put("xColumn", xColumnName);
 		params.put("yColumn", yColumnName);

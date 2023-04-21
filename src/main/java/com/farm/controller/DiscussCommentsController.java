@@ -1,28 +1,23 @@
 package com.farm.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Map;
-import java.util.Date;
-import javax.servlet.http.HttpServletRequest;
-
-import com.farm.entity.DiscussqukuaiEntity;
-import com.farm.entity.view.DiscussqukuaiView;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.farm.annotation.IgnoreAuth;
-
+import com.farm.entity.DiscussqukuaiEntity;
+import com.farm.entity.view.DiscussqukuaiView;
 import com.farm.service.DiscussqukuaiService;
+import com.farm.utils.MPUtil;
 import com.farm.utils.PageUtils;
 import com.farm.utils.R;
-import com.farm.utils.MPUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Map;
 
 
 /**
@@ -51,7 +46,7 @@ public class DiscussCommentsController {
      */
     @RequestMapping("/page")
     public R page (@RequestParam Map<String, Object> params, DiscussqukuaiEntity discussqukuai, HttpServletRequest request) {
-        EntityWrapper<DiscussqukuaiEntity> ew = new EntityWrapper<DiscussqukuaiEntity>();
+        EntityWrapper<DiscussqukuaiEntity> ew = new EntityWrapper<>();
         PageUtils page = discussqukuaiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, discussqukuai), params), params));
 
         return R.ok().put("data", page);
