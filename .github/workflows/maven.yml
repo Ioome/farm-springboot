@@ -83,6 +83,7 @@ jobs:
           uses: fifsky/ssh-action@master
           with:
             host: ${{ secrets.HOST }}
+            port: 22
             user: ${{ secrets.USER }}
             key: ${{ secrets.PRIVATE_KEY }}
 
