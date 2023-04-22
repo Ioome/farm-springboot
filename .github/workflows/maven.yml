@@ -56,11 +56,9 @@ jobs:
     - name: SSH
       uses: fifsky/ssh-action@master
       with:
-      command: |
-        echo "hello world"
-      host: ${{ secrets.HOST }}
-      user: ${{ secrets.USER }}
-      key: ${{ secrets.PRIVATE_KEY }}
+        host: ${{ secrets.HOST }}
+        user: ${{ secrets.USER }}
+        key: ${{ secrets.PRIVATE_KEY }}
 
   show:
      needs: build
