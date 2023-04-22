@@ -82,9 +82,9 @@ jobs:
         - name: SSH
           uses: fifsky/ssh-action@master
           with:
-          host: ${{ secrets.HOST }}
-          user: ${{ secrets.USER }}
-          key: ${{ secrets.PRIVATE_KEY }}
+            host: ${{ secrets.HOST }}
+            user: ${{ secrets.USER }}
+            key: ${{ secrets.PRIVATE_KEY }}
           command: | 
             cd /opt/app-sh
             sh start.sh
