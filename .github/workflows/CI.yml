@@ -12,9 +12,9 @@ name: CI
 #  当什么时候出发，比如当开发人员提交的时候，也就是说什么时候
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "dev" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "dev" ]
 
 # 工作
 jobs:
