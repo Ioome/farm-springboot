@@ -45,7 +45,18 @@ jobs:
     - name: Set up Docker Buildx
       id: buildx
       uses: docker/setup-buildx-action@v1
-  
+    - name: 连接 SSH
+      uses: fifsky/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          echo "连接成功"
+          cd /opt/docker-compose
+          docker-compose down
+          docker-compose up -d
   show:
      needs: build
      runs-on: ubuntu-latest
@@ -62,7 +73,7 @@ jobs:
             docker version
             docker-compose -v
             git version
-  
+   
 
 #    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
 #    - name: Update dependency graph
