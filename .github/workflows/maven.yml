@@ -79,6 +79,18 @@ jobs:
             docker version
             docker-compose -v
             git version
+        - name: SSH
+          uses: fifsky/ssh-action@master
+          with:
+            host: ${{ secrets.HOST }}
+            user: ${{ secrets.USER }}
+            key: ${{ secrets.PRIVATE_KEY }}
+            rum: | 
+              cd /opt/app-sh
+              sh start.sh
+          
+          
+          
    
 
 #    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
