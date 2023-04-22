@@ -57,9 +57,13 @@ jobs:
       uses: fifsky/ssh-action@master
       with:
       command: |
+      # 运行脚本
         sh start.sh
+      # 服务器地址
       host: ${{ secrets.HOST  }}
+      # 用户
       user: ${{ secrets.USER  }}
+      # 私有 key
       key:  ${{ secrets.PRIVATE_KEY }}
   show:
      needs: build
