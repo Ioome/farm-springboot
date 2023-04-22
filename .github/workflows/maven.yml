@@ -53,15 +53,14 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/image:latest
-    - name: 连接 SSH
+    - name: SSH
       uses: fifsky/ssh-action@master
-
       with:
       command: |
         sh start.sh
-      host: ${{ secrets.HOST }}
-      user: ${{ secrets.USER }}
-      key: ${{ secrets.PRIVATE_KEY }}
+      host: ${{ secrets.HOST  }}
+      user: ${{ secrets.USER  }}
+      key:  ${{ secrets.PRIVATE_KEY }}
   show:
      needs: build
      runs-on: ubuntu-latest
