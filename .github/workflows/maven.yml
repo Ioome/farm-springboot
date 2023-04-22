@@ -85,12 +85,7 @@ jobs:
             host: ${{ secrets.HOST }}
             user: ${{ secrets.USER }}
             key: ${{ secrets.PRIVATE_KEY }}
-          run: | 
-            cd /opt/app-sh
-            sh start.sh
-          
-          
-   
+
 
 #    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
 #    - name: Update dependency graph
