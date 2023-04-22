@@ -20,8 +20,8 @@ spring:
     static-locations: classpath:static/,file:static/
   redis:
     database: 1
-    host: 124.220.40.252
-    port: 6124
+    host: 119.91.218.241
+    port: 6379
     #    password: bS5Dyju7azsd1R3DSGASgsf
     jedis:
       pool:
