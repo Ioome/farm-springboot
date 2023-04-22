@@ -61,7 +61,7 @@ public class ConfigController{
     }
     
     /**
-     * 详情
+     * 详情1
      */
     @IgnoreAuth
     @RequestMapping("/detail/{id}")
