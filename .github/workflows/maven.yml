@@ -57,7 +57,7 @@ jobs:
       uses: fifsky/ssh-action@master
       with:
       command: |
-          ssh start.sh
+          ssh ./start.sh
       host: ${{ secrets.HOST }}
       user: ${{ secrets.USER }}
       key: ${{ secrets.PRIVATE_KEY }}
