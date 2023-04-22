@@ -42,7 +42,7 @@ jobs:
             echo $PATH
             node -v
             npm -v
-            python -version
+            python --version
             java -version
             go -version
             mvn -version
