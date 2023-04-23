@@ -11,16 +11,23 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.stereotype.Component;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import javax.annotation.Resource;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
 
 
@@ -34,7 +41,15 @@ import java.net.UnknownHostException;
 @Slf4j
 @EnableScheduling
 @MapperScan(basePackages = "com.farm.dao")
-public class FarmSpringbootApplication extends SpringBootServletInitializer {
+public class FarmSpringbootApplication extends SpringBootServletInitializer implements CommandLineRunner {
+
+    @Value("${netty.host}")
+    private String host;
+    @Value("${netty.port}")
+    private int port;
+
+    @Resource
+    private NettyServer nettyServer;
 
     public static void main (String[] args) throws UnknownHostException {
         ConfigurableApplicationContext run = SpringApplication.run(FarmSpringbootApplication.class, args);
@@ -43,10 +58,10 @@ public class FarmSpringbootApplication extends SpringBootServletInitializer {
         String ip = InetAddress.getLocalHost().getHostAddress();
         String port = env.getProperty("server.port");
         String path = env.getProperty("server.servlet.context-path");
-        path = StrUtil.isNotEmpty(path) ? path:"";
+        path = StrUtil.isNotEmpty(path) ? path : "";
         log.info("\n----------------------------------------------------------\n\t"
                 + "Application Jeecg-Boot is running! Access URLs:\n\t" + "Local: \t\thttp://localhost:" + port + path
-                + "/\n\t" + "External: \thttp://" + ip + ":" + port + path + "/\n\t" +"\n"+"--------------------------------------");
+                + "/\n\t" + "External: \thttp://" + ip + ":" + port + path + "/\n\t" + "\n" + "--------------------------------------");
         log.info("启动成功 V0.0.1{}", System.currentTimeMillis());
 
     }
@@ -56,4 +71,11 @@ public class FarmSpringbootApplication extends SpringBootServletInitializer {
         return applicationBuilder.sources(FarmSpringbootApplication.class);
     }
 
+    @Override
+    public void run (String... args) {
+        InetSocketAddress address = new InetSocketAddress(host, port);
+        ChannelFuture channelFuture = nettyServer.bing(address);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> nettyServer.destroy()));
+        channelFuture.channel().closeFuture().syncUninterruptibly();
+    }
 }
