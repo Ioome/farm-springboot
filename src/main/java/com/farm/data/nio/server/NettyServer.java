@@ -15,10 +15,10 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  */
 public class NettyServer {
     public static void main(String[] args) {
-        new NettyServer().bing();
+
     }
 
-    private void bing() {
+    public void bing () {
         EventLoopGroup parentGroup = new NioEventLoopGroup();
         EventLoopGroup childGroup = new NioEventLoopGroup();
         try {
