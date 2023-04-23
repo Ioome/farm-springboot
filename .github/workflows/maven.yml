@@ -62,9 +62,6 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-      script: |
-        ls
-
   show:
      needs: build
      runs-on: ubuntu-latest
