@@ -1,0 +1,37 @@
+name: CI
+
+#  当什么时候出发，比如当开发人员提交的时候，也就是说什么时候
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+jobs:
+    pull-docker:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            ls
+    show:
+       needs: pull-docker
+       runs-on: ubuntu-latest
+       steps:
+          - name: Show
+            run: |
+              echo $PATH
+              node -v
+              npm -v
+              python --version
+              java -version
+              go version
+              mvn -version
+              docker version
+              docker-compose -v
+              git version
