@@ -54,8 +54,8 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/image:latest
   pull-docker:
-      needs: [build]
-      name: pull-docker
+    - name: pull-docker
+      needs: build
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
