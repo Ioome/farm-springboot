@@ -26,7 +26,7 @@ public class LoginConfiguration implements WebMvcConfigurer {
         String[] includePatterns = new String[]{"/**"};
         //排除拦截路径
         String[] excludePatterns = new String[]{"/swagger-resources/**", "/webjars/**", "/v2/**", "/farm/swagger-ui.html/**",
-                "/farm/api", "/api-docs", "/farm/api-docs/**"};
+                "/farm/api/v1/data/*", "/api-docs", "/farm/api-docs/**"};
 
         //将数组转化为集合
         List<String> listOldExclude = Arrays.asList(excludePatterns);
