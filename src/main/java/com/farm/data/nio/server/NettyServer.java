@@ -7,6 +7,7 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @name: NettyServer
@@ -14,8 +15,10 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  * @date: 2023-04-23 20:47
  * @description: NettyServer
  */
+@Slf4j
 public class NettyServer {
-    public static void main(String[] args) {
+    public static void main (String[] args) {
+        log.info("NettyServer.main() start");
         new NettyServer().bing();
     }
 
