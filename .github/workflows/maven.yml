@@ -56,7 +56,7 @@ jobs:
   pull-docker:
       needs: [build]
       name: pull-docker
-      reuns-on: ubuntu-latest
+      runs-on: ubuntu-latest
       steps:
       - name: Deploy
         uses: appleboy/ssh-action@master
