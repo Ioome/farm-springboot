@@ -30,7 +30,7 @@ public class FarmSpringbootApplication extends SpringBootServletInitializer {
 
     public static void main (String[] args) throws UnknownHostException {
         ConfigurableApplicationContext run = SpringApplication.run(FarmSpringbootApplication.class, args);
-        System.out.println("-----------------------------------");
+        log.info("-----------------------------------");
         Environment env = run.getEnvironment();
         String ip = InetAddress.getLocalHost().getHostAddress();
         String port = env.getProperty("server.port");
