@@ -47,7 +47,6 @@ public class FarmSpringbootApplication extends SpringBootServletInitializer {
         log.info("\n----------------------------------------------------------\n\t"
                 + "Application Jeecg-Boot is running! Access URLs:\n\t" + "Local: \t\thttp://localhost:" + port + path
                 + "/\n\t" + "External: \thttp://" + ip + ":" + port + path + "/\n\t" +"\n"+"--------------------------------------");
-        new FarmSpringbootApplication().bing();
         log.info("启动成功 V0.0.1{}", System.currentTimeMillis());
 
     }
@@ -57,23 +56,4 @@ public class FarmSpringbootApplication extends SpringBootServletInitializer {
         return applicationBuilder.sources(FarmSpringbootApplication.class);
     }
 
-    private void bing() {
-        EventLoopGroup parentGroup = new NioEventLoopGroup();
-        EventLoopGroup childGroup = new NioEventLoopGroup();
-        try {
-            ServerBootstrap b = new ServerBootstrap();
-            b.group(parentGroup, childGroup)
-                    .channel(NioServerSocketChannel.class)
-                    .option(ChannelOption.SO_BACKLOG, 128)
-                    .childHandler(new MyChannelInitializer());
-            ChannelFuture f = b.bind(2345).sync();
-            f.channel().closeFuture().sync();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            childGroup.shutdownGracefully();
-            parentGroup.shutdownGracefully();
-        }
-
-    }
 }

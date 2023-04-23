@@ -1,5 +1,6 @@
 package com.farm.data.nio.server;
 
+import com.farm.FarmSpringbootApplication;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
@@ -15,7 +16,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  */
 public class NettyServer {
     public static void main(String[] args) {
-
+        new NettyServer().bing();
     }
 
     public void bing () {
