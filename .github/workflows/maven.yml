@@ -53,13 +53,17 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/image:latest
-    - name: SSH
-      uses: fifsky/ssh-action@master
+  pull-docker:
+      needs: [build]
+      name: pull-docker
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
-        user: ${{ secrets.USER }}
-        key: ${{ secrets.PRIVATE_KEY }}
- 
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+      script: |
+        ls
 
   show:
      needs: build
@@ -77,13 +81,6 @@ jobs:
             docker version
             docker-compose -v
             git version
-        - name: SSH
-          uses: fifsky/ssh-action@master
-          with:
-            host: ${{ secrets.HOST }}
-            port: 22
-            user: ${{ secrets.USER }}
-            key: ${{ secrets.PRIVATE_KEY }}
 
 
 #    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
