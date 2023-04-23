@@ -54,7 +54,6 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/image:latest
           # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
-
   pull-docker:
       needs: [build]
       name: pull-docker
