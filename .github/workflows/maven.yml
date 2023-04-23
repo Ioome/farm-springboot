@@ -69,7 +69,6 @@ jobs:
            cd /opt/app-sh
            sh start.sh
   show:
-     needs: build
      runs-on: ubuntu-latest
      steps:
         - name: Show
