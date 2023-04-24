@@ -6,7 +6,7 @@ server:
   servlet:
     context-path: /farm
 netty:
-  host: 127.0.0.1
+  host: 119.91.218.241
   port: 7397
 spring:
   datasource:
