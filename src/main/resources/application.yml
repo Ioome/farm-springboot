@@ -35,7 +35,7 @@ spring:
 
 logging:
   level:
-    com.com: trace
+    com.com: DEBUG
   file:
     # 日志文件路径
     # 日志文件路径 linux
