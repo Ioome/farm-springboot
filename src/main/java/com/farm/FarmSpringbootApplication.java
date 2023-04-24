@@ -1,8 +1,12 @@
 package com.farm;
 
 import cn.hutool.core.util.StrUtil;
+import com.farm.data.nio.server.NettyServer;
+import io.netty.channel.ChannelFuture;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -13,7 +17,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import javax.annotation.Resource;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
 
 
@@ -28,9 +34,14 @@ import java.net.UnknownHostException;
 @EnableAsync
 @EnableScheduling
 @MapperScan(basePackages = "com.farm.dao")
-public class FarmSpringbootApplication extends SpringBootServletInitializer{
+public class FarmSpringbootApplication extends SpringBootServletInitializer implements CommandLineRunner {
 
-
+    @Value("${netty.host}")
+    private String host;
+    @Value("${netty.port}")
+    private int port;
+    @Resource
+    private NettyServer nettyServer;
 
     public static void main (String[] args) throws UnknownHostException {
         ConfigurableApplicationContext run = SpringApplication.run(FarmSpringbootApplication.class, args);
@@ -51,5 +62,12 @@ public class FarmSpringbootApplication extends SpringBootServletInitializer{
     protected SpringApplicationBuilder configure (SpringApplicationBuilder applicationBuilder) {
         return applicationBuilder.sources(FarmSpringbootApplication.class);
     }
-    
+
+    @Override
+    public void run (String... args) throws Exception {
+        InetSocketAddress address = new InetSocketAddress(host, port);
+        ChannelFuture channelFuture = nettyServer.bing(address);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> nettyServer.destroy()));
+        channelFuture.channel().closeFuture().syncUninterruptibly();
+    }
 }
