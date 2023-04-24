@@ -1,5 +1,7 @@
 package com.farm.data.nio.server;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.socket.SocketChannel;
@@ -9,11 +11,7 @@ import org.slf4j.LoggerFactory;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * 虫洞栈：https://bugstack.cn
- * 公众号：bugstack虫洞栈  ｛获取学习源码｝
- * Create by fuzhengwei on 2019
- */
+
 public class MyServerHandler extends ChannelInboundHandlerAdapter {
 
     private Logger logger = LoggerFactory.getLogger(MyServerHandler.class);
@@ -29,7 +27,6 @@ public class MyServerHandler extends ChannelInboundHandlerAdapter {
         logger.info("链接报告IP:{}", channel.localAddress().getHostString());
         logger.info("链接报告Port:{}", channel.localAddress().getPort());
         logger.info("链接报告完毕");
-        //通知客户端链接建立成功
         String str = "通知客户端链接建立成功" + " " + new Date() + " " + channel.localAddress().getHostString() + "\r\n";
         ctx.writeAndFlush(str);
     }
@@ -39,16 +36,17 @@ public class MyServerHandler extends ChannelInboundHandlerAdapter {
      */
     @Override
     public void channelInactive (ChannelHandlerContext ctx) throws Exception {
-        logger.info("客户端断开链接{}", ctx.channel().localAddress().toString());
+        logger.info("客户端断开链接{}", ctx.channel().localAddress());
     }
 
     @Override
     public void channelRead (ChannelHandlerContext ctx, Object msg) throws Exception {
-        //接收msg消息{与上一章节相比，此处已经不需要自己进行解码}
-        logger.info(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + " 服务端接收到消息：" + msg);
-        //通知客户端链消息发送成功
-        String str = "服务端收到：" + new Date() + " " + msg + "\r\n";
-        ctx.writeAndFlush(str);
+        logger.info("date {}", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        logger.info("接收到消息 {}", msg);
+        String str = "服务端收到1：" + new Date() + " " + msg + "\r\n";
+        ByteBuf buf = Unpooled.buffer(str.getBytes().length);
+        buf.writeBytes(str.getBytes("GBK"));
+        ctx.writeAndFlush(buf);
     }
 
     /**
@@ -57,7 +55,7 @@ public class MyServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void exceptionCaught (ChannelHandlerContext ctx, Throwable cause) throws Exception {
         ctx.close();
-        logger.info("异常信息：\r\n" + cause.getMessage());
+        logger.info("异常信息：{}\r\n", cause.getMessage());
     }
 
 }
