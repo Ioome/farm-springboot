@@ -1,7 +1,8 @@
 FROM openjdk:8-jre
-MAINTAINER pdai
+MAINTAINER sutton
 WORKDIR /
 ADD target/farm-springboot-0.0.1-SNAPSHOT.jar app.jar
-EXPOSE 8080
+EXPOSE 9241
+EXPOSE 7397
 ENTRYPOINT ["java", "-jar"]
 CMD ["app.jar"]
