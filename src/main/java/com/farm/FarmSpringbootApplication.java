@@ -68,6 +68,5 @@ public class FarmSpringbootApplication extends SpringBootServletInitializer impl
         InetSocketAddress address = new InetSocketAddress(host, port);
         ChannelFuture channelFuture = nettyServer.bing(address);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> nettyServer.destroy()));
-//        channelFuture.channel().closeFuture().syncUninterruptibly();
     }
 }
