@@ -8,7 +8,6 @@ import io.netty.channel.socket.SocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -41,7 +40,7 @@ public class MyServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead (ChannelHandlerContext ctx, Object msg) throws Exception {
-        logger.info("date {}", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        logger.info("date {}", new Date());
         logger.info("接收到消息 {}", msg);
         String str = "服务端收到1：" + new Date() + " " + msg + "\r\n";
         ByteBuf buf = Unpooled.buffer(str.getBytes().length);

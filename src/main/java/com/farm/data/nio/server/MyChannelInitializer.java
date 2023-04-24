@@ -2,6 +2,8 @@ package com.farm.data.nio.server;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @name: MyChannelInitializer
@@ -10,16 +12,17 @@ import io.netty.channel.socket.SocketChannel;
  * @description: MyChannelInitializer
  */
 public class MyChannelInitializer extends ChannelInitializer<SocketChannel> {
+    private final Logger logger = LoggerFactory.getLogger(MyChannelInitializer.class);
+
+
     @Override
-    protected void initChannel(SocketChannel channel) {
+    protected void initChannel (SocketChannel channel) {
 
-        System.out.println("链接报告开始");
-        System.out.println("链接报告信息：有一客户端链接到本服务端");
-        System.out.println("链接报告IP:" + channel.localAddress().getHostString());
-        System.out.println("链接报告Port:" + channel.localAddress().getPort());
-        System.out.println("链接报告完毕");
-
-        //在管道中添加我们自己的接收数据实现方法
+        logger.info("链接报告开始");
+        logger.info("链接报告信息：有一客户端链接到本服务端");
+        logger.info("链接报告IP: {}",channel.localAddress().getHostString());
+        logger.info("链接报告Port: {}",  channel.localAddress().getPort());
+        logger.info("链接报告完毕");
         channel.pipeline().addLast(new MyServerHandler());
 
     }

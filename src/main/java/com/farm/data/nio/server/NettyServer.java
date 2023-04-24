@@ -53,12 +53,14 @@ public class NettyServer {
         if (null == channel) {
             return;
         }
+        logger.info("netty server close");
         channel.close();
         parentGroup.shutdownGracefully();
         childGroup.shutdownGracefully();
     }
 
     public Channel getChannel () {
+        logger.info("netty server getChannel");
         return channel;
     }
 
