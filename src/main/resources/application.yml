@@ -5,10 +5,6 @@ server:
   port: 9241
   servlet:
     context-path: /farm
-netty:
-  host: 127.0.0.1
-  port: 9242
-
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
